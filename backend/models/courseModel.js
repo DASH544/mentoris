@@ -17,16 +17,12 @@ const courseSchema=new mongoose.Schema(
            type:mongoose.Schema.Types.ObjectId,
             ref:"user"
         },
-        isAdmin:
-        {
-            type:Boolean,
-        },
-        lectures:
+        lectures:[
         {
             type:mongoose.Schema.Types.ObjectId,
             ref:"lecture"
-        }
+        }]
 
-    })
+    },{timestamps:true})
 
     export const CourseModel=mongoose.model("course",courseSchema)

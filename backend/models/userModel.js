@@ -17,16 +17,20 @@ const userSchema=new mongoose.Schema(
             type:String,
             required:true
         },
-        isAdmin:
+        role:
         {
-            type:Boolean,
+            type:String,
+            default:"user"
         },
-        courses:
+        subsciption:[
         {
             type:mongoose.Schema.Types.ObjectId,
             ref:"Course"
-        }
+        }]
 
+    },
+    {
+        timestamps:true
     })
 
     export const UserModel=mongoose.model("user",userSchema)

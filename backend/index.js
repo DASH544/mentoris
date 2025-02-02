@@ -9,8 +9,10 @@ app.use(express.json())
 const port=process.env.PORT
 //importing routes
 import userRouter from "./routes/userRoutes.js"
+import courseRouter from "./routes/courseRouter.js"
 //using routes
 app.use("/api/v1/users",userRouter)
+app.use("/api/v1/admin",courseRouter)
 console.log(port)
 app.listen(port,()=>
     {
