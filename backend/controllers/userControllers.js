@@ -59,7 +59,10 @@ export const userSignin = async (req, res) => {
     const userId = user._id.toString();
     const userRole=user.role
     console.log(userId);
-    const token = jwt.sign({ userId,userRole }, process.env.JWT_SECRET);
+    const token = jwt.sign({ userId,userRole }, process.env.JWT_SECRET,
+      {
+        expiresIn:"15d",
+      });
     res.status(200).json({ message: "User SignIn Sucessfully", token: token });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -89,5 +92,17 @@ export const getAllCourse=async (req,res)=>
       
     } catch (error) {
       res.status(500).json({message:error.message})
+    }
+  }
+export const userProfile=async (req,res)=>
+  {
+    try {
+      const userId=req.userId
+      console.log(userId)
+      const userDetails=await UserModel.findById(userId)
+      if(!userDetails) return res.status(404).json({message:"user not found"})
+        res.status(200).json({userDetails})
+    } catch (error) {
+      res.status(500).json(error.message)
     }
   }

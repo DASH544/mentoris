@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-export const isAuth=async(req,res,next)=>
+export const userAuth=async(req,res,next)=>
     {
         try {
             const token=req.headers.authorization
@@ -8,7 +8,7 @@ export const isAuth=async(req,res,next)=>
                 return res.status(400).json({message:"Unauthuorized"})    
                 }
             const userData=jwt.verify(token,process.env.JWT_SECRET)
-            if(userData)
+            if(userData && userData.userRole=="user")
                 {
                     req.userId=userData.userId
                     next()
