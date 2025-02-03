@@ -3,6 +3,7 @@ import z from "zod";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { UserModel } from "../models/userModel.js";
+import { CourseModel } from "../models/courseModel.js";
 const requiredBody = z.object({
   name: z.string().min(3).max(32),
   email: z.string().email(),
@@ -76,4 +77,17 @@ export const userCourses=async (req,res)=>
       res.status(500).json({message:error.message})
     }
   }
-
+export const getAllCourse=async (req,res)=>
+  {
+    try {
+      const allCourses=await CourseModel.find()
+      if(!allCourses) return res.status(404).json({message:"No Courses Found"})
+      else
+    {
+      res.status(200).json(allCourses)
+    }
+      
+    } catch (error) {
+      res.status(500).json({message:error.message})
+    }
+  }
