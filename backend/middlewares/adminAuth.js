@@ -7,7 +7,7 @@ export const adminAuth = async (req, res, next) => {
     }
  
     const adminData = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(adminData)
+  
     if (adminData && adminData.userRole == "admin") {
       req.admin = adminData.userId;
       next();
