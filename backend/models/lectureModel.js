@@ -19,10 +19,10 @@ const lectureSchema=new mongoose.Schema(
         },
         course:
         {
-            type:mongoose.Types.ObjectId,
+            type:mongoose.Schema.Types.ObjectId,
             ref:"courseModel",
             required:true
         }
     },{timestamps:true})
 
-    export const LectureModel=mongoose.Schema("lecture",lectureSchema)
+    export const LectureModel=mongoose.model("lecture",lectureSchema)

@@ -1,5 +1,5 @@
 import express from "express";
-import { adminProfile, createCourse, deleteCourse, editCourse, getAllUsers, myCourses } from "../controllers/admin_courseControllers.js";
+import { addLecture, adminProfile, createCourse, deleteCourse, editCourse, getAllUsers, myCourses } from "../controllers/admin_courseControllers.js";
 import { adminAuth } from "../middlewares/adminAuth.js";
 import { getAllCourse } from "../controllers/userControllers.js";
 const router = express.Router();
@@ -11,4 +11,6 @@ router.put("/mycourse/edit/:id",adminAuth,editCourse)
 router.get("/myusers",adminAuth,getAllUsers)
 router.get("/all",getAllCourse)
 router.get("/myprofile",adminAuth,adminProfile)
+//lectures
+router.post("/addlecture/:id",adminAuth,addLecture)
 export default router;
