@@ -14,8 +14,8 @@ const lectureSchema=new mongoose.Schema(
         },
         video:
         {
-            type:String,
-            required:true
+            id:String,
+            url:String
         },
         course:
         {
