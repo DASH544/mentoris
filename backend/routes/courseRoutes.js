@@ -8,6 +8,8 @@ const router = express.Router();
 
 
 router.get("/all",getAllCourse)
-router.post("/addlecture/:id",adminAuth,uploadFile,addLecture)
-router.get("/lectures/:id",userAuth)
+router.get("/single",getSingleCourse)
+router.get("/lectures/:id", userAuth, fetchLectures);
+router.get("/lecture/:id", userAuth, fetchLecture);
+router.get("/mycourse",userAuth , getMyCourses);
 export default router;
